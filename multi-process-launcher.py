@@ -40,7 +40,7 @@ def exit_callback(cmd_line):
 def run_in_separe_process(exit_callback, cmd_line):
 
     def run_process(exit_callback, cmd_line):
-        sub_proc = subprocess.Popen(cmd_line, shell=True, preexec_fn=os.setsid)
+        sub_proc = subprocess.Popen(cmd_line, shell=True, preexec_fn=os.setsid, env=os.environ)
         PROCESS.append(sub_proc)
         print('PYTHON_START_WRAPPER: %s started as %s' % (cmd_line, sub_proc.pid), file=sys.stderr)
         sub_proc.wait()
